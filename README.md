@@ -19,8 +19,8 @@ To run the project locally, clone the repository and follow these steps:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/react-native-project.git
-   cd react-native-project
+   git clone https://github.com/farhun/flip-test-project.git
+   cd flip-test-project
    ```
 
 2. Install dependencies:
@@ -106,4 +106,4 @@ The app implements several techniques to ensure optimal performance:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License

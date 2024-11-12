@@ -27,6 +27,7 @@ import { Colors } from '../themes/Colors';
 
 const TransactionListPage = ({ navigation }: { navigation: any }) => {
   const { items, status, error, refetch } = useFetchData();
+  const itemsArray = Array.isArray(items) ? items : Object.values(items);
   const { filteredData, searchText, setSearchText, sort, setSort, filterData } = useFilterAndSort(items);
   const [modalFilter, setModalFilter] = useState(false);
 
@@ -58,7 +59,7 @@ const TransactionListPage = ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={styles.container}>
       <CustomStatusBar barStyle="light-content" backgroundColor={Colors.orange} />
-      {status === 'succeeded' && filteredData && filteredData.length > 0 && (
+      {status === 'succeeded' && itemsArray && itemsArray.length > 0 && (
         <View style={styles.contentContainer}>
           <SearchBar 
             searchText={searchText} 
