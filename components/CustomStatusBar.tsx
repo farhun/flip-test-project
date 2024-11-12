@@ -23,7 +23,7 @@ const CustomStatusBar: React.FC<CustomStatusBarProps> = ({
 
 const styles = StyleSheet.create({
   statusBar: {
-    height: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    height: Platform.OS === 'android' ? null : 0,
   },
 });
 
