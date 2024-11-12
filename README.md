@@ -1,79 +1,109 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# React Native Project
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+This is a React Native project built using TypeScript, showcasing the ability to fetch data, display it, and manage state effectively.
 
-## Step 1: Start the Metro Server
+## Table of Contents
+- [Project Setup](#project-setup)
+- [Dependencies](#dependencies)
+- [App Functionalities](#app-functionalities)
+- [State Management](#state-management)
+- [Custom Hooks](#custom-hooks)
+- [UI Design](#ui-design)
+- [Performance Optimization](#performance-optimization)
+- [License](#license)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Project Setup
 
-To start Metro, run the following command from the _root_ of your React Native project:
+To run the project locally, clone the repository and follow these steps:
 
-```bash
-# using npm
-npm start
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/react-native-project.git
+   cd react-native-project
+   ```
 
-# OR using Yarn
-yarn start
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Step 2: Start your Application
+3. Run the app in development mode:
+   ```bash
+   npx react-native run-android
+   # or
+   npx react-native run-ios
+   ```
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## Dependencies
 
-### For Android
+This project uses the following libraries:
 
-```bash
-# using npm
-npm run android
+- **React Native**: For building the mobile application.
+- **Redux Toolkit**: For state management.
+- **React Navigation**: For navigating between screens.
+- **Axios**: For making API requests.
+- **React Native Modal**: For modal popups.
+- **React Native Vector Icons**: For custom icons.
 
-# OR using Yarn
-yarn android
-```
+## App Functionalities
 
-### For iOS
+### Features:
+- Fetches data from `https://recruitment-test.flip.id/frontend-test` API.
+- Displays the fetched data in a clean, list-based UI.
+- Implements sorting, filtering, and searching for data.
+- Modal support for filter settings.
+- Reusable custom hooks for fetching data and filtering/sorting.
 
-```bash
-# using npm
-npm run ios
+### Screens:
+- **TransactionListPage**: Displays the list of items with sorting and filtering options.
+- **DetailTransactionPage**: Shows details of an individual item when selected.
 
-# OR using Yarn
-yarn ios
-```
+## State Management
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+We are using **Redux** to manage the app's state. The state includes:
+- `items`: An array to store the fetched data.
+- `status`: Tracks the fetching status (`idle`, `loading`, `succeeded`, `failed`).
+- `error`: Stores any error message if the fetch fails.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+The app dispatches actions to fetch data from the API, and updates the Redux state accordingly.
 
-## Step 3: Modifying your App
+## Custom Hooks
 
-Now that you have successfully run the app, let's modify it.
+The following custom hooks are used in the app:
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### `useFetchData`
+- Fetches data from the API and returns the `items`, `status`, `error`, and a `refetch` function.
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+### `useFilterAndSort` & `useFilterModal`
+- Filters and sorts the fetched data based on search input and selected sorting option.
+- Provides options for sorting by `Nama A-Z`, `Nama Z-A`, `Tanggal Terbaru`, and `Tanggal Terlama`.
 
-## Congratulations! :tada:
+### `useIcon`
+- A reusable hook to fetch different types of icons with optional `size`, `color`, and `onPress` handlers.
 
-You've successfully run and modified your React Native App. :partying_face:
+## UI Design
 
-### Now what?
+The app is designed to be simple and responsive:
+- **List items**: Displayed with the main data fields, allowing the user to filter and sort.
+- **Icons**: Used for actions such as sorting and retrying the fetch operation.
+- **Modals**: Provide filter options without navigating away from the current screen.
+- **Error handling**: A retry option is provided in case the data fetch fails.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+### Code Style:
+- Clean and readable code structure.
+- Performance optimization, such as minimizing re-renders and optimizing imports.
 
-# Troubleshooting
+## Performance Optimization
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+The app implements several techniques to ensure optimal performance:
+- Minimized re-renders.
+- Avoided unnecessary dependencies in hooks.
+- Optimized imports to reduce bundle size.
+- Efficient state management to avoid unnecessary state updates.
 
-# Learn More
+## License
 
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
